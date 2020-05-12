@@ -1,22 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://higeo1.github.io</id>
-    <title>higeo</title>
-    <updated>2020-05-12T15:11:06.797Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://higeo1.github.io"/>
-    <link rel="self" href="https://higeo1.github.io/atom.xml"/>
-    <subtitle>电工与码农的日常记录</subtitle>
-    <logo>https://higeo1.github.io/images/avatar.png</logo>
-    <icon>https://higeo1.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, higeo</rights>
-    <entry>
-        <title type="html"><![CDATA[（转）FMC_扩展外部SDRAM（一）]]></title>
-        <id>https://higeo1.github.io/post/zhuan-fmc_-kuo-zhan-wai-bu-sdramyi/</id>
-        <link href="https://higeo1.github.io/post/zhuan-fmc_-kuo-zhan-wai-bu-sdramyi/">
-        </link>
-        <updated>2020-05-12T15:09:21.000Z</updated>
-        <content type="html"><![CDATA[<p>STM32 控制器芯片内部有一定大小的 SRAM 及 FLASH 作为内存和程序存储空间，但当程序较大，内存和程序空间不足时，就需要在 STM32 芯片的外部扩展存储器。</p>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>（转）FMC_扩展外部SDRAM（一） | higeo</title>
+<link rel="shortcut icon" href="https://higeo1.github.io/favicon.ico?v=1589296260343">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://higeo1.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="（转）FMC_扩展外部SDRAM（一） | higeo - Atom Feed" href="https://higeo1.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="STM32 控制器芯片内部有一定大小的 SRAM 及 FLASH 作为内存和程序存储空间，但当程序较大，内存和程序空间不足时，就需要在 STM32 芯片的外部扩展存储器。
+SDRAM 控制原理
+给 STM32 芯片扩展内存与给 PC 扩展内..." />
+    <meta name="keywords" content="STM32F429,转载" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://higeo1.github.io">
+  <img class="avatar" src="https://higeo1.github.io/images/avatar.png?v=1589296260343" alt="">
+  </a>
+  <h1 class="site-title">
+    higeo
+  </h1>
+  <p class="site-description">
+    电工与码农的日常记录
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              （转）FMC_扩展外部SDRAM（一）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-12
+              </span>
+              <span>
+                15 min read
+              </span>
+              
+                <a href="https://higeo1.github.io/tag/IFEG1TgtK/" class="post-tag">
+                  # STM32F429
+                </a>
+              
+                <a href="https://higeo1.github.io/tag/yFzj8njBE/" class="post-tag">
+                  # 转载
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>STM32 控制器芯片内部有一定大小的 SRAM 及 FLASH 作为内存和程序存储空间，但当程序较大，内存和程序空间不足时，就需要在 STM32 芯片的外部扩展存储器。</p>
 <p>SDRAM 控制原理<br>
 给 STM32 芯片扩展内存与给 PC 扩展内存的原理是一样的，只是 PC 上一般以内存条的形式扩展，内存条实质是由多个内存颗粒(即 SDRAM 芯片)组成的通用标准模块，而STM32 直接与 SDRAM 芯片连接。</p>
 <p>SDRAM 芯片外观：</p>
@@ -130,31 +212,104 @@ STM32 FMC 访问时配置需要这些参数。</p>
 ————————————————<br>
 版权声明：本文为CSDN博主「Waao666」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
 原文链接：https://blog.csdn.net/weixin_40973138/article/details/87902173</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[测试网站功能]]></title>
-        <id>https://higeo1.github.io/post/ce-shi-wang-zhan-gong-neng/</id>
-        <link href="https://higeo1.github.io/post/ce-shi-wang-zhan-gong-neng/">
-        </link>
-        <updated>2020-05-12T14:42:21.000Z</updated>
-        <content type="html"><![CDATA[<p>测试网站功能</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于]]></title>
-        <id>https://higeo1.github.io/post/about/</id>
-        <link href="https://higeo1.github.io/post/about/">
-        </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>1641330472@qq.com</p>
-]]></content>
-    </entry>
-</feed>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://higeo1.github.io/post/ce-shi-wang-zhan-gong-neng/">
+              <h3 class="post-title">
+                测试网站功能
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '75f7ce2dae3fcf0fa68a',
+    clientSecret: '4bd71329780e612e865f5b5cda5df03a9a5e70d4',
+    repo: 'higeo1.github.io',
+    owner: 'higeo1',
+    admin: ['higeo1'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://higeo1.github.io/" target="_blank"> 
+   higeo</a>
+  <a class="rss" href="https://higeo1.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
