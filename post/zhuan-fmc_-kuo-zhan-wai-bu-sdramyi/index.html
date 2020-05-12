@@ -3,10 +3,10 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>（转）FMC_扩展外部SDRAM（一） | higeo</title>
-<link rel="shortcut icon" href="http://http://mka0m7.coding-pages.com/favicon.ico?v=1589298494791">
+<link rel="shortcut icon" href="http://higeo1.github.io/favicon.ico?v=1589298728676">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="http://http://mka0m7.coding-pages.com/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="（转）FMC_扩展外部SDRAM（一） | higeo - Atom Feed" href="http://http://mka0m7.coding-pages.com/atom.xml">
+<link rel="stylesheet" href="http://higeo1.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="（转）FMC_扩展外部SDRAM（一） | higeo - Atom Feed" href="http://higeo1.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -22,8 +22,8 @@ SDRAM 控制原理
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="http://http://mka0m7.coding-pages.com">
-  <img class="avatar" src="http://http://mka0m7.coding-pages.com/images/avatar.png?v=1589298494791" alt="">
+  <a href="http://higeo1.github.io">
+  <img class="avatar" src="http://higeo1.github.io/images/avatar.png?v=1589298728676" alt="">
   </a>
   <h1 class="site-title">
     higeo
@@ -86,11 +86,11 @@ SDRAM 控制原理
                 15 min read
               </span>
               
-                <a href="http://http://mka0m7.coding-pages.com/tag/IFEG1TgtK/" class="post-tag">
+                <a href="http://higeo1.github.io/tag/IFEG1TgtK/" class="post-tag">
                   # STM32F429
                 </a>
               
-                <a href="http://http://mka0m7.coding-pages.com/tag/yFzj8njBE/" class="post-tag">
+                <a href="http://higeo1.github.io/tag/yFzj8njBE/" class="post-tag">
                   # 转载
                 </a>
               
@@ -102,22 +102,22 @@ SDRAM 控制原理
 <p>SDRAM 控制原理<br>
 给 STM32 芯片扩展内存与给 PC 扩展内存的原理是一样的，只是 PC 上一般以内存条的形式扩展，内存条实质是由多个内存颗粒(即 SDRAM 芯片)组成的通用标准模块，而STM32 直接与 SDRAM 芯片连接。</p>
 <p>SDRAM 芯片外观：<br>
-<img src="http://http://mka0m7.coding-pages.com/post-images/1589296416540.png" alt="" loading="lazy"></p>
+<img src="http://higeo1.github.io/post-images/1589296416540.png" alt="" loading="lazy"></p>
 <p>下图是一种型号为 IS42-45S16400J 的 SDRAM芯片内部结构框图：<br>
-<img src="http://http://mka0m7.coding-pages.com/post-images/1589296445051.png" alt="" loading="lazy"></p>
+<img src="http://higeo1.github.io/post-images/1589296445051.png" alt="" loading="lazy"></p>
 <p>SDRAM 信号线<br>
-<img src="http://http://mka0m7.coding-pages.com/post-images/1589296459022.png" alt="" loading="lazy"><br>
+<img src="http://higeo1.github.io/post-images/1589296459022.png" alt="" loading="lazy"><br>
 除了时钟、地址和数据线，控制 SDRAM 还需要很多信号配合，它们具体作用在描述时序图时进行讲解。</p>
 <p>控制逻辑<br>
 SDRAM 内部的“控制逻辑”指挥着整个系统的运行，外部可通过 CS、WE、CAS、RAS 以及地址线来向控制逻辑输入命令，命令经过“命令器译码器”译码，并将控制参数保存到“模式寄存器中”，控制逻辑依此运行。</p>
 <p>地址控制<br>
 SDRAM 包含有“A”以及“BA”两类地址线，A 类地址线是行(Row)与列(Column)共用的地址总线，BA 地址线是独立的用于指定 SDRAM 内部存储阵列号(Bank)。在命令模式下，A 类地址线还用于某些命令输入参数。</p>
 <p>SDRAM 的存储阵列<br>
-<img src="http://http://mka0m7.coding-pages.com/post-images/1589296478587.png" alt="" loading="lazy"><br>
+<img src="http://higeo1.github.io/post-images/1589296478587.png" alt="" loading="lazy"><br>
 和表格查找一样，指定一个行地址和列地址，就可以精确地找到目标单元格，这是SDRAM 芯片寻址的基本原理。</p>
 <p>这样的每个单元格被称为存储单元，而这样的表则被称为存储阵列(Bank)，目前设计的 SDRAM 芯片基本上内部都包含有 4 个这样的 Bank，寻址时指定 Bank 号以及行地址，然后再指定列地址即可寻找到目标存储单元。</p>
 <p>SDRAM 内部具有多个 Bank 时的结构见图：<br>
-<img src="http://http://mka0m7.coding-pages.com/post-images/1589296495157.png" alt="" loading="lazy"><br>
+<img src="http://higeo1.github.io/post-images/1589296495157.png" alt="" loading="lazy"><br>
 SDRAM 芯片向外部提供有独立的 BA 类地址线用于 Bank 寻址，而行与列则共用 A 类地址线。</p>
 <p>程序框图中标号④中表示的就是它内部的存储阵列结构：</p>
 <p>通讯时当 RAS 线为低电平，则“行地址选通器”被选通，地址线 A[11:0]表示的地址会被输入到“行地址译码及锁存器”中，作为存储阵列中选定的行地址；<br>
@@ -229,7 +229,7 @@ STM32 FMC 访问时配置需要这些参数。</p>
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="http://http://mka0m7.coding-pages.com/post/ce-shi-wang-zhan-gong-neng/">
+            <a href="http://higeo1.github.io/post/ce-shi-wang-zhan-gong-neng/">
               <h3 class="post-title">
                 测试网站功能
               </h3>
@@ -268,7 +268,7 @@ STM32 FMC 访问时配置需要这些参数。</p>
         <div class="site-footer">
   Powered by <a href="https://higeo1.github.io/" target="_blank"> 
    higeo</a>
-  <a class="rss" href="http://http://mka0m7.coding-pages.com/atom.xml" target="_blank">
+  <a class="rss" href="http://higeo1.github.io/atom.xml" target="_blank">
     <i class="ri-rss-line"></i> RSS
   </a>
 </div>
